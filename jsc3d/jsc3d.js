@@ -1464,7 +1464,11 @@ JSC3D.Viewer.prototype.render = function() {
 	if(this.scene.isEmpty())
 		return;
 
-	var aabb = this.scene.aabb;
+	var aabb = this.scene.aabb;	
+	// check for aabb to prevent calling lengthOfDiagonal on null
+	if(!aabb)
+		return;
+
 
 	// calculate transformation matrix
 	if(this.webglBackend) {
